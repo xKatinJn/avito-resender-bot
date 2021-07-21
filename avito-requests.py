@@ -1,10 +1,10 @@
 import requests
 
 
-token = 'CoTZgWn6TlieNiUxNyzrJQNWmZXgiAGH6TdUNha6'
+token = 'BLQRDV1VQ1OndgG56vkIKwxDfZ4cQHn3F9jD7k6C'
 
 avito_url = 'https://api.avito.ru/messenger/v2/webhook'
-ngrok_url = 'http://790ede86485c.ngrok.io/'
+ngrok_url = 'http://89.108.88.69:5000/notifications_webhook'
 
 headers = {'Authorization': f'Bearer {token}'}
 body = {'url': ngrok_url}
