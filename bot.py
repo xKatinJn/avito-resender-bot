@@ -25,6 +25,7 @@ def message_handler(update: Update, context: CallbackContext) -> None:
             for chat in Chat.get_all_chats():
                 print(f'CHAT = {chat}')
                 if chat['is_active']:
+                    bot.send_message(chat_id, messages_loc['bot_currently_registered'])
                     return
             new_active_chat = Chat(chat_id=chat_id, is_active=True)
             new_active_chat.save()
