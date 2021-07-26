@@ -1,3 +1,5 @@
+import json
+
 from bot import bot
 from database import Chat
 
@@ -13,10 +15,12 @@ def index():
     return {'status_code': '200'}
 
 
-@app.route('/notifications_webhook', methods=['GET', 'POST'])
+@app.route('/notifications_webhook', methods=['POST'])
 def notifications_webhook():
     active_chat_id = [chat['chat_id'] for chat in Chat.get_all_chats() if chat['is_active']]
     if active_chat_id:
+        data = json.loads(request.json)
+        print(data)
         bot.send_message(active_chat_id[0], 'TEST_SERVER')
     payload = {'ok': True}
     response = jsonify(payload)
