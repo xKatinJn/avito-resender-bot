@@ -22,8 +22,9 @@ def notifications_webhook():
     if active_chat_id:
         data = request.json
         text = data['payload']['value']['content']['text']
+        channel_id = data['payload']['value']['chat_id']
         print(data)
-        bot.send_message(active_chat_id[0], localization.messages_loc['bot_new_msg'].format(text))
+        bot.send_message(active_chat_id[0], localization.messages_loc['bot_new_msg'].format(channel_id, text))
     payload = {'ok': True}
     response = jsonify(payload)
     response.status_code = 200
