@@ -19,7 +19,7 @@ def index():
 def notifications_webhook():
     active_chat_id = [chat['chat_id'] for chat in Chat.get_all_chats() if chat['is_active']]
     if active_chat_id:
-        data = json.loads(request.json)
+        data = request.json
         print(data)
         bot.send_message(active_chat_id[0], 'TEST_SERVER')
     payload = {'ok': True}
